@@ -1,21 +1,34 @@
+using PathFinding.Helper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PathFinding
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args) 
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            var grid = GridBuilder.InitGrid();
+            var start = GridBuilder.SetStart(new Position(0, 0), grid);
+            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            GridBuilder.SetBlock(new Position(1, 1), grid);
+            GridBuilder.SetBlock(new Position(1, 2), grid);
+
+            GridBuilder.SetBlock(new Position(2, 0), grid);
+
+            GridBuilder.SetBlock(new Position(3, 1), grid);
+            GridBuilder.SetBlock(new Position(3, 2), grid);
+
+            var navigator = new GridNavigator(grid);
+            navigator.StartPos = start;
+            navigator.GoalPos = goal;
+
+            var path = navigator.Go();
+
+            GridDrawer.DrawGrid(grid);
+            GridDrawer.DrawPath(grid, path, navigator);
+            GridDrawer.DrawSymbols(grid, path);
+            Console.ReadKey();
         }
     }
 }
