@@ -8,7 +8,7 @@ namespace PathFinding.UnitTests
     [TestClass]
     public class TestGetQuadrant
     {
-        private readonly int[,] grid;
+        private readonly short[,] grid;
 
         public TestGetQuadrant()
         {

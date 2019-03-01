@@ -13,7 +13,7 @@ namespace PathFinding.Helpers
         public Position StartPos;
         public Position GoalPos;
 
-        private readonly int[,] Grid;
+        private readonly short[,] Grid;
         private List<Position> Path = new List<Position>();
         private int MaxStepsBack { get; set; }
         private int TimesSteppedBack { get; set; } = 0;
@@ -70,28 +70,28 @@ namespace PathFinding.Helpers
             switch (direction)
             {
                 case Quadrant.North:
-                    CanDo = !Path.Contains(new Position(node.CurrentPos.X, node.CurrentPos.Y - 1));
+                    CanDo = !Path.Contains(new Position(node.CurrentPos.X, (short)(node.CurrentPos.Y - 1)));
                     CanDo = CanDo && node.CurrentPos.Y - 1 >= 0;
-                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y - 1] != (short)BoxState.Block;
-                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y - 1] != (short)BoxState.DeadEnd;
+                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y - 1] != (short)NodeState.Block;
+                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y - 1] != (short)NodeState.DeadEnd;
                     break;
                 case Quadrant.East:
-                    CanDo = !Path.Contains(new Position(node.CurrentPos.X + 1, node.CurrentPos.Y));
+                    CanDo = !Path.Contains(new Position((short)(node.CurrentPos.X + 1), node.CurrentPos.Y));
                     CanDo = CanDo && node.CurrentPos.X + 1 < GridSize;
-                    CanDo = CanDo && Grid[node.CurrentPos.X + 1, node.CurrentPos.Y] != (short)BoxState.Block;
-                    CanDo = CanDo && Grid[node.CurrentPos.X + 1, node.CurrentPos.Y] != (short)BoxState.DeadEnd;
+                    CanDo = CanDo && Grid[node.CurrentPos.X + 1, node.CurrentPos.Y] != (short)NodeState.Block;
+                    CanDo = CanDo && Grid[node.CurrentPos.X + 1, node.CurrentPos.Y] != (short)NodeState.DeadEnd;
                     break;
                 case Quadrant.South:
-                    CanDo = !Path.Contains(new Position(node.CurrentPos.X, node.CurrentPos.Y + 1));
+                    CanDo = !Path.Contains(new Position(node.CurrentPos.X, (short)(node.CurrentPos.Y + 1)));
                     CanDo = CanDo && node.CurrentPos.Y + 1 < GridSize;
-                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y + 1] != (short)BoxState.Block;
-                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y + 1] != (short)BoxState.DeadEnd;
+                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y + 1] != (short)NodeState.Block;
+                    CanDo = CanDo && Grid[node.CurrentPos.X, node.CurrentPos.Y + 1] != (short)NodeState.DeadEnd;
                     break;
                 case Quadrant.West:
-                    CanDo = !Path.Contains(new Position(node.CurrentPos.X - 1, node.CurrentPos.Y));
+                    CanDo = !Path.Contains(new Position((short)(node.CurrentPos.X - 1), node.CurrentPos.Y));
                     CanDo = CanDo && node.CurrentPos.X - 1 >= 0;
-                    CanDo = CanDo && Grid[node.CurrentPos.X - 1, node.CurrentPos.Y] != (short)BoxState.Block;
-                    CanDo = CanDo && Grid[node.CurrentPos.X - 1, node.CurrentPos.Y] != (short)BoxState.DeadEnd;
+                    CanDo = CanDo && Grid[node.CurrentPos.X - 1, node.CurrentPos.Y] != (short)NodeState.Block;
+                    CanDo = CanDo && Grid[node.CurrentPos.X - 1, node.CurrentPos.Y] != (short)NodeState.DeadEnd;
                     break;
                 default:
                     break;
@@ -126,7 +126,7 @@ namespace PathFinding.Helpers
             return (Quadrant)res;
         }
 
-        public GridNavigator(int[,] grid, int maxStepsBack = 3)
+        public GridNavigator(short[,] grid, short maxStepsBack = 3)
         {
             Grid = grid;
             MaxStepsBack = maxStepsBack;

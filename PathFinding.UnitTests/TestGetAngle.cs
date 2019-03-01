@@ -7,7 +7,7 @@ namespace PathFinding.UnitTests
     [TestClass]
     public class TestGetAngle
     {
-        private readonly int[,] grid;
+        private readonly short[,] grid;
 
         public TestGetAngle()
         {

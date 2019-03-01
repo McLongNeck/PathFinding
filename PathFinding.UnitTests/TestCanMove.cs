@@ -8,7 +8,7 @@ namespace PathFinding.UnitTests
     [TestClass]
     public class TestCanMove
     {
-        private readonly int[,] grid;
+        private readonly short[,] grid;
         private GridNavigator navigator;
 
         public TestCanMove()

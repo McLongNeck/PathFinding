@@ -6,7 +6,7 @@ namespace PathFinding.Models
     [DebuggerDisplay("{X}, {Y}")]
     public struct Position
     {
-        public Position(int x, int y)
+        public Position(short x, short y)
         {
             X = x;
             Y = y;
@@ -40,7 +40,7 @@ namespace PathFinding.Models
             return this.X == _obj.X && this.Y == _obj.Y;
         }
 
-        public int X;
-        public int Y;
+        public short X;
+        public short Y;
     }
 }

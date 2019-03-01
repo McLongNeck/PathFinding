@@ -1,35 +1,35 @@
 ﻿using PathFinding.Models;
+using PathFinding.ViewModels;
 using System;
 using System.Collections.Generic;
-using static PathFinding.Helpers.GridBuilder;
 
 namespace PathFinding.Helpers
 {
     public static class GridDrawer
     {
-        public static void DrawGrid(int[,] grid)
+        public static void DrawGrid(short[,] grid)
         {
-            for (int y = 0; y < GridBuilder.GridSize; y++)
+            for (short y = 0; y < GridBuilder.GridSize; y++)
             {
-                for (int x = 0; x < GridBuilder.GridSize; x++)
+                for (short x = 0; x < GridBuilder.GridSize; x++)
                 {
-                    switch ((BoxState)grid[x, y])
+                    switch ((NodeState)grid[x, y])
                     {
-                        case BoxState.Empty:
+                        case NodeState.Empty:
                             Console.Write("0 ", grid[x, y]);
                             break;
-                        case BoxState.Start:
+                        case NodeState.Start:
                             Console.Write("S ", grid[x, y]);
                             break;
-                        case BoxState.Goal:
+                        case NodeState.Goal:
                             Console.Write("G ", grid[x, y]);
                             break;
-                        case BoxState.Block:
+                        case NodeState.Block:
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.Write("B ", grid[x, y]);
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
-                        case BoxState.DeadEnd:
+                        case NodeState.DeadEnd:
                             Console.ForegroundColor = ConsoleColor.DarkCyan;
                             Console.Write("D ", grid[x, y]);
                             Console.ForegroundColor = ConsoleColor.White;
@@ -44,13 +44,12 @@ namespace PathFinding.Helpers
             }
         }
 
-        public static void DrawPath(int[,] grid, List<Position> path, GridNavigator nav)
+        public static void DrawPath(short[,] grid, List<Position> path, GridNavigator nav)
         {
             var i = 0;
 
             foreach (var node in path)
             {
-
                 Console.ForegroundColor = nav.Success ? ConsoleColor.Green : ConsoleColor.DarkYellow;
                 Console.SetCursorPosition(node.X * 2, node.Y);
                 Console.Write(i >= 10 ? "{0}" : "{0} ", i);
@@ -60,22 +59,22 @@ namespace PathFinding.Helpers
             }
         }
 
-        public static void DrawSymbols(int[,] grid, List<Position> path)
+        public static void DrawSymbols(short[,] grid, List<Position> path)
         {
             Console.ForegroundColor = ConsoleColor.Green;
 
 
-            for (int y = 0; y < GridBuilder.GridSize; y++)
+            for (short y = 0; y < GridBuilder.GridSize; y++)
             {
-                for (int x = 0; x < GridBuilder.GridSize; x++)
+                for (short x = 0; x < GridBuilder.GridSize; x++)
                 {
-                    switch ((BoxState)grid[x, y])
+                    switch ((NodeState)grid[x, y])
                     {
-                        case BoxState.Start:
+                        case NodeState.Start:
                             Console.SetCursorPosition(x * 2, y);
                             Console.Write("S ", grid[x, y]);
                             break;
-                        case BoxState.Goal:
+                        case NodeState.Goal:
                             Console.SetCursorPosition(x * 2, y);
                             Console.Write("G ", grid[x, y]);
                             break;

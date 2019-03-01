@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\NodeState.cs" />
     <Compile Include="ViewModels\Quadrant.cs" />
     <Compile Include="Helpers\GridBuilder.cs" />
     <Compile Include="Helpers\GridDrawer.cs" />

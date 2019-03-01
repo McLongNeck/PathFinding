@@ -9,7 +9,7 @@ namespace PathFinding.UnitTests
     [TestClass]
     public class TestGetPath
     {
-        private readonly int[,] grid;
+        private readonly short[,] grid;
         private GridNavigator navigator;
 
         public TestGetPath()
