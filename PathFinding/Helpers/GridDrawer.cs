@@ -1,8 +1,9 @@
-﻿using System;
+﻿using PathFinding.Models;
+using System;
 using System.Collections.Generic;
-using static PathFinding.Helper.GridBuilder;
+using static PathFinding.Helpers.GridBuilder;
 
-namespace PathFinding.Helper
+namespace PathFinding.Helpers
 {
     public static class GridDrawer
     {

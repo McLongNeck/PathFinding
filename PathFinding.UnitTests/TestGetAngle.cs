@@ -1,13 +1,13 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PathFinding.Helper;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PathFinding.Helpers;
+using PathFinding.Models;
 
 namespace PathFinding.UnitTests
 {
     [TestClass]
     public class TestGetAngle
     {
-        int[,] grid;
+        private readonly int[,] grid;
 
         public TestGetAngle()
         {

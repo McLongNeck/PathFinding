@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PathFinding.Helper;
+using PathFinding.Helpers;
+using PathFinding.Models;
+using PathFinding.ViewModels;
 
 namespace PathFinding.UnitTests
 {

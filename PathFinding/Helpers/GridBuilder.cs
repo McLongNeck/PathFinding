@@ -1,4 +1,6 @@
-﻿namespace PathFinding.Helper
+﻿using PathFinding.Models;
+
+namespace PathFinding.Helpers
 {
     public static class GridBuilder
     {
@@ -31,7 +33,7 @@
         public static Position SetStart(Position pos, int[,] grid)
         {
             grid[pos.X, pos.Y] = (int)BoxState.Start;
-            
+
             return pos;
         }
 

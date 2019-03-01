@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PathFinding.Helpers;
+using PathFinding.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PathFinding.Helper;
 
 namespace PathFinding.UnitTests
 {
     [TestClass]
     public class TestGetPath
     {
-        int[,] grid;
-        GridNavigator navigator;
+        private readonly int[,] grid;
+        private GridNavigator navigator;
 
         public TestGetPath()
         {

@@ -42,9 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\GridBuilder.cs" />
-    <Compile Include="Helper\GridDrawer.cs" />
-    <Compile Include="Helper\GridNavigator.cs" />
+    <Compile Include="ViewModels\Quadrant.cs" />
+    <Compile Include="Helpers\GridBuilder.cs" />
+    <Compile Include="Helpers\GridDrawer.cs" />
+    <Compile Include="Controllers\GridNavigator.cs" />
+    <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,5 +55,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

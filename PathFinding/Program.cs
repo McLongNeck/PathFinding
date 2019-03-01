@@ -1,11 +1,12 @@
-using PathFinding.Helper;
+using PathFinding.Helpers;
+using PathFinding.Models;
 using System;
 
 namespace PathFinding
 {
     internal class Program
     {
-        private static void Main(string[] args) 
+        private static void Main(string[] args)
         {
             var grid = GridBuilder.InitGrid();
             var start = GridBuilder.SetStart(new Position(0, 0), grid);
