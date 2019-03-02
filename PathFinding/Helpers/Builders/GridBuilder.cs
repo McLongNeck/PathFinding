@@ -1,5 +1,5 @@
 ﻿using PathFinding.Models;
-using PathFinding.ViewModels;
+using PathFinding.Models.Enums;
 
 namespace PathFinding.Helpers
 {

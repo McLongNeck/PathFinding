@@ -1,5 +1,5 @@
 ﻿using PathFinding.Models;
-using PathFinding.ViewModels;
+using PathFinding.Models.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -36,7 +36,6 @@ namespace PathFinding.Helpers
                             break;
                         default:
                             throw new Exception();
-
                     }
                 }
 
@@ -50,7 +49,7 @@ namespace PathFinding.Helpers
 
             foreach (var node in path)
             {
-                Console.ForegroundColor = nav.Success ? ConsoleColor.Green : ConsoleColor.DarkYellow;
+                Console.ForegroundColor = nav.PathFound ? ConsoleColor.Green : ConsoleColor.DarkYellow;
                 Console.SetCursorPosition(node.X * 2, node.Y);
                 Console.Write(i >= 10 ? "{0}" : "{0} ", i);
                 Console.ForegroundColor = ConsoleColor.White;
@@ -62,7 +61,6 @@ namespace PathFinding.Helpers
         public static void DrawSymbols(short[,] grid, List<Position> path)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-
 
             for (short y = 0; y < GridBuilder.GridSize; y++)
             {

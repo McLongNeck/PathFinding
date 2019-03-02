@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PathFinding.Helpers;
 using PathFinding.Models;
-using PathFinding.ViewModels;
+using PathFinding.Models.Enums;
 
 namespace PathFinding.UnitTests
 {
@@ -20,9 +20,9 @@ namespace PathFinding.UnitTests
         {
             var start = GridBuilder.SetStart(new Position(1, 1), grid);
             var goal = GridBuilder.SetGoal(new Position(1, 0), grid);
-            var angle = Navigator.GetAngle(start, goal);
+            var angle = AngleHelper.GetAngle(start, goal);
 
-            var result = Navigator.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(angle);
 
             Assert.AreEqual(Quadrant.North, result);
         }
@@ -32,9 +32,9 @@ namespace PathFinding.UnitTests
         {
             var start = GridBuilder.SetStart(new Position(1, 1), grid);
             var goal = GridBuilder.SetGoal(new Position(2, 1), grid);
-            var angle = Navigator.GetAngle(start, goal);
+            var angle = AngleHelper.GetAngle(start, goal);
 
-            var result = Navigator.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(angle);
 
             Assert.AreEqual(Quadrant.East, result);
         }
@@ -44,9 +44,9 @@ namespace PathFinding.UnitTests
         {
             var start = GridBuilder.SetStart(new Position(0, 0), grid);
             var goal = GridBuilder.SetGoal(new Position(0, 1), grid);
-            var angle = Navigator.GetAngle(start, goal);
+            var angle = AngleHelper.GetAngle(start, goal);
 
-            var result = Navigator.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(angle);
 
             Assert.AreEqual(Quadrant.South, result);
         }
@@ -56,9 +56,9 @@ namespace PathFinding.UnitTests
         {
             var start = GridBuilder.SetStart(new Position(1, 1), grid);
             var goal = GridBuilder.SetGoal(new Position(0, 1), grid);
-            var angle = Navigator.GetAngle(start, goal);
+            var angle = AngleHelper.GetAngle(start, goal);
 
-            var result = Navigator.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(angle);
 
             Assert.AreEqual(Quadrant.West, result);
         }
@@ -68,9 +68,9 @@ namespace PathFinding.UnitTests
         {
             var start = GridBuilder.SetStart(new Position(2, 2), grid);
             var goal = GridBuilder.SetGoal(new Position(1, 1), grid);
-            var angle = Navigator.GetAngle(start, goal);
+            var angle = AngleHelper.GetAngle(start, goal);
 
-            var result = Navigator.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(angle);
 
             Assert.AreEqual(Quadrant.West, result);
         }
@@ -80,9 +80,9 @@ namespace PathFinding.UnitTests
         {
             var start = GridBuilder.SetStart(new Position(1, 3), grid);
             var goal = GridBuilder.SetGoal(new Position(0, 0), grid);
-            var angle = Navigator.GetAngle(start, goal);
+            var angle = AngleHelper.GetAngle(start, goal);
 
-            var result = Navigator.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(angle);
 
             Assert.AreEqual(Quadrant.North, result);
         }
@@ -92,9 +92,9 @@ namespace PathFinding.UnitTests
         {
             var start = GridBuilder.SetStart(new Position(1, 1), grid);
             var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
-            var angle = Navigator.GetAngle(start, goal);
+            var angle = AngleHelper.GetAngle(start, goal);
 
-            var result = Navigator.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(angle);
 
             Assert.AreEqual(Quadrant.East, result);
         }

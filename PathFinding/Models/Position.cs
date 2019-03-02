@@ -1,4 +1,4 @@
-﻿using PathFinding.ViewModels;
+﻿using PathFinding.Models.Enums;
 using System.Diagnostics;
 
 namespace PathFinding.Models
@@ -6,6 +6,9 @@ namespace PathFinding.Models
     [DebuggerDisplay("{X}, {Y}")]
     public struct Position
     {
+        public short X;
+        public short Y;
+
         public Position(short x, short y)
         {
             X = x;
@@ -39,8 +42,5 @@ namespace PathFinding.Models
 
             return this.X == _obj.X && this.Y == _obj.Y;
         }
-
-        public short X;
-        public short Y;
     }
 }

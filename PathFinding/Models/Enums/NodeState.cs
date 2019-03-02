@@ -1,4 +1,4 @@
-﻿namespace PathFinding.ViewModels
+﻿namespace PathFinding.Models.Enums
 {
     public enum NodeState
     {

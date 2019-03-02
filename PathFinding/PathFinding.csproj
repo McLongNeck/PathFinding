@@ -42,10 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModels\NodeState.cs" />
-    <Compile Include="ViewModels\Quadrant.cs" />
-    <Compile Include="Helpers\GridBuilder.cs" />
-    <Compile Include="Helpers\GridDrawer.cs" />
+    <Compile Include="Helpers\AngleHelper.cs" />
+    <Compile Include="Helpers\QuadrantHelper.cs" />
+    <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Models\Enums\NodeState.cs" />
+    <Compile Include="Models\Enums\Quadrant.cs" />
+    <Compile Include="Helpers\Builders\GridBuilder.cs" />
+    <Compile Include="Drawers\GridDrawer.cs" />
     <Compile Include="Models\Navigator.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\Position.cs" />
