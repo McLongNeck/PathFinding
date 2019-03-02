@@ -20,7 +20,7 @@ namespace PathFinding
             GridBuilder.SetBlock(new Position(3, 1), grid);
             GridBuilder.SetBlock(new Position(3, 2), grid);
 
-            var navigator = new GridNavigator(grid);
+            var navigator = new Navigator(grid);
             navigator.StartPos = start;
             navigator.GoalPos = goal;
 

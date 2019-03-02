@@ -44,7 +44,7 @@ namespace PathFinding.Helpers
             }
         }
 
-        public static void DrawPath(short[,] grid, List<Position> path, GridNavigator nav)
+        public static void DrawPath(short[,] grid, List<Position> path, Navigator nav)
         {
             var i = 0;
 

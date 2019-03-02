@@ -9,12 +9,12 @@ namespace PathFinding.UnitTests
     public class TestCanMove
     {
         private readonly short[,] grid;
-        private GridNavigator navigator;
+        private Navigator navigator;
 
         public TestCanMove()
         {
             grid = GridBuilder.InitGrid();
-            navigator = new GridNavigator(grid);
+            navigator = new Navigator(grid);
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace PathFinding.UnitTests
         public void MoveOnBlock()
         {
             GridBuilder.SetBlock(new Position(2, 2), grid);
-            var navigator = new GridNavigator(grid);
+            var navigator = new Navigator(grid);
 
             Assert.AreEqual(navigator.CanMove(new GridNode(2, 3), Quadrant.North), false);
             Assert.AreEqual(navigator.CanMove(new GridNode(1, 2), Quadrant.East), false);

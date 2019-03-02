@@ -12,9 +12,9 @@ namespace PathFinding.Models
             Y = y;
         }
 
-        public void Move(Quadrant quad)
+        public void Move(Quadrant direction)
         {
-            switch (quad)
+            switch (direction)
             {
                 case Quadrant.North:
                     Y--;

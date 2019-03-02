@@ -10,12 +10,12 @@ namespace PathFinding.UnitTests
     public class TestGetPath
     {
         private readonly short[,] grid;
-        private GridNavigator navigator;
+        private Navigator navigator;
 
         public TestGetPath()
         {
             grid = GridBuilder.InitGrid();
-            navigator = new GridNavigator(grid);
+            navigator = new Navigator(grid);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace PathFinding.UnitTests
             var block = GridBuilder.SetBlock(new Position(2, 1), grid);
             var goal = GridBuilder.SetGoal(new Position(3, 1), grid);
 
-            var navigator = new GridNavigator(grid);
+            var navigator = new Navigator(grid);
             navigator.StartPos = start;
             navigator.GoalPos = goal;
 
@@ -91,7 +91,7 @@ namespace PathFinding.UnitTests
             GridBuilder.SetBlock(new Position(2, 1), grid);
             var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 
-            var navigator = new GridNavigator(grid);
+            var navigator = new Navigator(grid);
             navigator.StartPos = start;
             navigator.GoalPos = goal;
 
@@ -119,7 +119,7 @@ namespace PathFinding.UnitTests
             GridBuilder.SetBlock(new Position(2, 2), grid);
             var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 
-            var navigator = new GridNavigator(grid);
+            var navigator = new Navigator(grid);
             navigator.StartPos = start;
             navigator.GoalPos = goal;
 
@@ -148,7 +148,7 @@ namespace PathFinding.UnitTests
             GridBuilder.SetBlock(new Position(2, 1), grid);
             var goal = GridBuilder.SetGoal(new Position(4, 0), grid);
 
-            var navigator = new GridNavigator(grid);
+            var navigator = new Navigator(grid);
             navigator.StartPos = start;
             navigator.GoalPos = goal;
 
@@ -181,7 +181,7 @@ namespace PathFinding.UnitTests
             GridBuilder.SetBlock(new Position(3, 2), grid);
             var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 
-            var navigator = new GridNavigator(grid);
+            var navigator = new Navigator(grid);
             navigator.StartPos = start;
             navigator.GoalPos = goal;
 

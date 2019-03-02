@@ -7,7 +7,7 @@ using static PathFinding.Helpers.GridBuilder;
 
 namespace PathFinding.Helpers
 {
-    public class GridNavigator
+    public class Navigator
     {
         public bool Success { get; private set; } = false;
         public Position StartPos;
@@ -18,9 +18,15 @@ namespace PathFinding.Helpers
         private int MaxStepsBack { get; set; }
         private int TimesSteppedBack { get; set; } = 0;
 
-        private Quadrant GetSecondSide(double angle, Quadrant notQuadrant)
+        /* Put in helper class. */
+
+        /// <summary>
+        /// Will get the second quadrant based on angle. So when angle points NNE, first choice would be North, since it's closest. 
+        /// When excluding North, East will become your next best option.
+        /// </summary>
+        public static Quadrant GetSecondQuadrant(double angle, Quadrant firstQuadrant)
         {
-            switch (notQuadrant)
+            switch (firstQuadrant)
             {
                 case Quadrant.East:
                     return angle >= 0 ? Quadrant.South : Quadrant.North;
@@ -40,22 +46,26 @@ namespace PathFinding.Helpers
             Quadrant result;
             var angleToGoal = GetAngle(node.CurrentPos, GoalPos);
 
+            /* Can we move directly towards the goal? */
             if (CanMove(node, result = GetQuadrant(angleToGoal)))
             {
                 return result;
             }
 
-            if (CanMove(node, result = GetSecondSide(angleToGoal, result)))
+            /* Can we move to the secondary quadrant? */
+            if (CanMove(node, result = GetSecondQuadrant(angleToGoal, result)))
             {
                 return result;
             }
 
+            /* Can we move to the thrid quadrant? */
             if (CanMove(node, result = GetQuadrant(angleToGoal + 180)))
             {
                 return result;
             }
 
-            if (CanMove(node, result = GetSecondSide(angleToGoal + 180, result)))
+            /* Guess it's worth a shot to see if we can move to the fourth quadrant? */
+            if (CanMove(node, result = GetSecondQuadrant(angleToGoal + 180, result)))
             {
                 return result;
             }
@@ -126,7 +136,7 @@ namespace PathFinding.Helpers
             return (Quadrant)res;
         }
 
-        public GridNavigator(short[,] grid, short maxStepsBack = 3)
+        public Navigator(short[,] grid, short maxStepsBack = 3)
         {
             Grid = grid;
             MaxStepsBack = maxStepsBack;

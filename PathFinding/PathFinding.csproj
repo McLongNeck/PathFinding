@@ -46,7 +46,7 @@
     <Compile Include="ViewModels\Quadrant.cs" />
     <Compile Include="Helpers\GridBuilder.cs" />
     <Compile Include="Helpers\GridDrawer.cs" />
-    <Compile Include="Controllers\GridNavigator.cs" />
+    <Compile Include="Models\Navigator.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Program.cs" />
