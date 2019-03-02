@@ -73,9 +73,9 @@ namespace PathFinding.Models
                     SetDeadEnd(Path.Last(), Grid);
                     Path.Remove(Path.Last());
 
-                    var LastIndex = Path.IndexOf(Path.Last());
-                    currentNode.CurrentPos = Path[LastIndex];
-                    currentNode.PreviousPos = LastIndex - 1 >= 0 ? Path[LastIndex - 1] : currentNode.CurrentPos;
+                    var lastIndex = Path.IndexOf(Path.Last());
+                    currentNode.CurrentPos = Path[lastIndex];
+                    currentNode.PreviousPos = lastIndex - 1 >= 0 ? Path[lastIndex - 1] : currentNode.CurrentPos;
 
                     return GetNextPos(currentNode);
                 }

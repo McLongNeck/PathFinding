@@ -7,20 +7,10 @@ namespace PathFinding.UnitTests
     [TestClass]
     public class TestGetAngle
     {
-        private readonly short[,] grid;
-
-        public TestGetAngle()
-        {
-            grid = GridBuilder.InitGrid();
-        }
-
         [TestMethod]
         public void GetAngleUp()
         {
-            var start = GridBuilder.SetStart(new Position(1, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(1, 0), grid);
-
-            var result = AngleHelper.GetAngle(start, goal);
+            var result = AngleHelper.GetAngle(new Position(1, 1), new Position(1, 0));
 
             Assert.AreEqual(270, result);
         }
@@ -28,10 +18,7 @@ namespace PathFinding.UnitTests
         [TestMethod]
         public void GetAngleRight()
         {
-            var start = GridBuilder.SetStart(new Position(1, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(2, 1), grid);
-
-            var result = AngleHelper.GetAngle(start, goal);
+            var result = AngleHelper.GetAngle(new Position(1, 1), new Position(2, 1));
 
             Assert.AreEqual(0, result);
         }
@@ -39,10 +26,7 @@ namespace PathFinding.UnitTests
         [TestMethod]
         public void GetAngleDown()
         {
-            var start = GridBuilder.SetStart(new Position(0, 0), grid);
-            var goal = GridBuilder.SetGoal(new Position(0, 1), grid);
-
-            var result = AngleHelper.GetAngle(start, goal);
+            var result = AngleHelper.GetAngle(new Position(0, 0), new Position(0, 1));
 
             Assert.AreEqual(90, result);
         }
@@ -50,10 +34,7 @@ namespace PathFinding.UnitTests
         [TestMethod]
         public void GetAngleLeft()
         {
-            var start = GridBuilder.SetStart(new Position(1, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(0, 1), grid);
-
-            var result = AngleHelper.GetAngle(start, goal);
+            var result = AngleHelper.GetAngle(new Position(1, 1), new Position(0, 1));
 
             Assert.AreEqual(180, result);
         }

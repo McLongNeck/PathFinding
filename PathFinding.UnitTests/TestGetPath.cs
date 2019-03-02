@@ -87,9 +87,10 @@ namespace PathFinding.UnitTests
         public void GetPathSimpleWall()
         {
             var start = GridBuilder.SetStart(new Position(0, 0), grid);
+            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
+
             GridBuilder.SetBlock(new Position(2, 0), grid);
             GridBuilder.SetBlock(new Position(2, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 
             var navigator = new Navigator(grid);
             navigator.StartPos = start;
@@ -114,10 +115,11 @@ namespace PathFinding.UnitTests
         public void GetPathBigWall()
         {
             var start = GridBuilder.SetStart(new Position(0, 0), grid);
+            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
+
             GridBuilder.SetBlock(new Position(2, 0), grid);
             GridBuilder.SetBlock(new Position(2, 1), grid);
             GridBuilder.SetBlock(new Position(2, 2), grid);
-            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 
             var navigator = new Navigator(grid);
             navigator.StartPos = start;
@@ -144,9 +146,10 @@ namespace PathFinding.UnitTests
         public void GetPathCorner()
         {
             var start = GridBuilder.SetStart(new Position(0, 0), grid);
+            var goal = GridBuilder.SetGoal(new Position(4, 0), grid);
+
             GridBuilder.SetBlock(new Position(3, 0), grid);
             GridBuilder.SetBlock(new Position(2, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(4, 0), grid);
 
             var navigator = new Navigator(grid);
             navigator.StartPos = start;
@@ -172,6 +175,8 @@ namespace PathFinding.UnitTests
         public void GetPathDeepCorner()
         {
             var start = GridBuilder.SetStart(new Position(0, 0), grid);
+            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
+
             GridBuilder.SetBlock(new Position(1, 1), grid);
             GridBuilder.SetBlock(new Position(1, 2), grid);
 
@@ -179,7 +184,6 @@ namespace PathFinding.UnitTests
 
             GridBuilder.SetBlock(new Position(3, 1), grid);
             GridBuilder.SetBlock(new Position(3, 2), grid);
-            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 
             var navigator = new Navigator(grid);
             navigator.StartPos = start;

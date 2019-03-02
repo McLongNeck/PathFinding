@@ -9,6 +9,7 @@ namespace PathFinding
         private static void Main(string[] args)
         {
             var grid = GridBuilder.InitGrid();
+
             var start = GridBuilder.SetStart(new Position(0, 0), grid);
             var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
 

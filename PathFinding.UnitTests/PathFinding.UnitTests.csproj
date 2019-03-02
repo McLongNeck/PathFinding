@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="TestCanMove.cs" />
     <Compile Include="TestGetPath.cs" />
+    <Compile Include="TestGetSecondQuadrant.cs" />
     <Compile Include="TestGetQuadrant.cs" />
     <Compile Include="TestGetAngle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,16 +5,43 @@ namespace PathFinding.Helpers
 {
     public static class QuadrantHelper
     {
-        public static Quadrant GetQuadrant(double angle)
+        public static Quadrant Opposite(Quadrant quadrant)
         {
-            var res = Math.Round((angle / 90));
-
-            if (res > (int)Quadrant.MAX)
+            switch (quadrant)
             {
-                res -= (int)Quadrant.MAX + 1;
+                case Quadrant.East:
+                    return Quadrant.West;
+                case Quadrant.South:
+                    return Quadrant.North;
+                case Quadrant.West:
+                    return Quadrant.East;
+                case Quadrant.North:
+                    return Quadrant.South;
+                default:
+                    throw new Exception("This is some shit.");
+            }
+        }
+
+        public static Quadrant ConstrainQuadrant(int quadrant)
+        {
+            var quadrantCount = Enum.GetNames(typeof(Quadrant)).Length;
+
+            while (quadrant >= quadrantCount)
+            {
+                quadrant -= quadrantCount;
             }
 
-            return (Quadrant)res;
+            return (Quadrant)quadrant;
+        }
+
+        public static Quadrant GetQuadrant(double angle)
+        {
+            angle = AngleHelper.ContraintAngle(angle);
+
+            var quad = (int)Math.Round((angle / 90));
+            var result = ConstrainQuadrant(quad);
+
+            return result;
         }
 
         /// <summary>
@@ -23,10 +50,12 @@ namespace PathFinding.Helpers
         /// </summary>
         public static Quadrant GetSecondQuadrant(double angle, Quadrant firstQuadrant)
         {
+            angle = AngleHelper.ContraintAngle(angle);
+
             switch (firstQuadrant)
             {
                 case Quadrant.East:
-                    return angle >= 0 ? Quadrant.South : Quadrant.North;
+                    return angle >= 0 && angle < 90 ? Quadrant.South : Quadrant.North;
                 case Quadrant.South:
                     return angle < 90 ? Quadrant.East : Quadrant.West;
                 case Quadrant.West:

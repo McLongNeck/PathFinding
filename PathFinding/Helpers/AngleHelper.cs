@@ -10,13 +10,24 @@ namespace PathFinding.Helpers
             float yDiff = goal.Y - current.Y;
             var result = System.Math.Atan2(yDiff, xDiff) * 180.0 / System.Math.PI;
 
-            if (result < 0)
-            {
-                result += 360;
-            }
+            result = ContraintAngle(result);
 
             return result;
         }
 
+        public static double ContraintAngle(double angle)
+        {
+            while (angle < 0)
+            {
+                angle += 360;
+            }
+
+            while (angle >= 360)
+            {
+                angle -= 360;
+            }
+
+            return angle;
+        }
     }
 }

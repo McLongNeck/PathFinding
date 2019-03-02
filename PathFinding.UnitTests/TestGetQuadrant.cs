@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PathFinding.Helpers;
-using PathFinding.Models;
 using PathFinding.Models.Enums;
 
 namespace PathFinding.UnitTests
@@ -8,21 +7,11 @@ namespace PathFinding.UnitTests
     [TestClass]
     public class TestGetQuadrant
     {
-        private readonly short[,] grid;
-
-        public TestGetQuadrant()
-        {
-            grid = GridBuilder.InitGrid();
-        }
-
+        /* Up, down, left, right */
         [TestMethod]
         public void GetQuadrantNorth()
         {
-            var start = GridBuilder.SetStart(new Position(1, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(1, 0), grid);
-            var angle = AngleHelper.GetAngle(start, goal);
-
-            var result = QuadrantHelper.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(270);
 
             Assert.AreEqual(Quadrant.North, result);
         }
@@ -30,11 +19,7 @@ namespace PathFinding.UnitTests
         [TestMethod]
         public void GetQuadrantEast()
         {
-            var start = GridBuilder.SetStart(new Position(1, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(2, 1), grid);
-            var angle = AngleHelper.GetAngle(start, goal);
-
-            var result = QuadrantHelper.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(0);
 
             Assert.AreEqual(Quadrant.East, result);
         }
@@ -42,11 +27,7 @@ namespace PathFinding.UnitTests
         [TestMethod]
         public void GetQuadrantSouth()
         {
-            var start = GridBuilder.SetStart(new Position(0, 0), grid);
-            var goal = GridBuilder.SetGoal(new Position(0, 1), grid);
-            var angle = AngleHelper.GetAngle(start, goal);
-
-            var result = QuadrantHelper.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(90);
 
             Assert.AreEqual(Quadrant.South, result);
         }
@@ -54,47 +35,49 @@ namespace PathFinding.UnitTests
         [TestMethod]
         public void GetQuadrantWest()
         {
-            var start = GridBuilder.SetStart(new Position(1, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(0, 1), grid);
-            var angle = AngleHelper.GetAngle(start, goal);
-
-            var result = QuadrantHelper.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(180);
 
             Assert.AreEqual(Quadrant.West, result);
         }
 
+        /* At and around 45 degree angle */
         [TestMethod]
         public void GetQuadrantEdge()
         {
-            var start = GridBuilder.SetStart(new Position(2, 2), grid);
-            var goal = GridBuilder.SetGoal(new Position(1, 1), grid);
-            var angle = AngleHelper.GetAngle(start, goal);
+            var result = QuadrantHelper.GetQuadrant(315);
 
-            var result = QuadrantHelper.GetQuadrant(angle);
-
-            Assert.AreEqual(Quadrant.West, result);
+            Assert.AreEqual(Quadrant.East, result);
         }
 
         [TestMethod]
-        public void GetQuadrantNorthEdge()
+        public void GetQuadrantEdgeMinusOne()
         {
-            var start = GridBuilder.SetStart(new Position(1, 3), grid);
-            var goal = GridBuilder.SetGoal(new Position(0, 0), grid);
-            var angle = AngleHelper.GetAngle(start, goal);
-
-            var result = QuadrantHelper.GetQuadrant(angle);
+            var result = QuadrantHelper.GetQuadrant(314);
 
             Assert.AreEqual(Quadrant.North, result);
         }
 
         [TestMethod]
-        public void GetQuadrantNorthEastEdge()
+        public void GetQuadrantEdgeAddOne()
         {
-            var start = GridBuilder.SetStart(new Position(1, 1), grid);
-            var goal = GridBuilder.SetGoal(new Position(3, 0), grid);
-            var angle = AngleHelper.GetAngle(start, goal);
+            var result = QuadrantHelper.GetQuadrant(316);
 
-            var result = QuadrantHelper.GetQuadrant(angle);
+            Assert.AreEqual(Quadrant.East, result);
+        }
+
+        /* Edge cases */
+        [TestMethod]
+        public void GetQuadrantFullCircle()
+        {
+            var result = QuadrantHelper.GetQuadrant(360);
+
+            Assert.AreEqual(Quadrant.East, result);
+        }
+
+        [TestMethod]
+        public void GetQuadrantDoubleFullCircle()
+        {
+            var result = QuadrantHelper.GetQuadrant(720);
 
             Assert.AreEqual(Quadrant.East, result);
         }
